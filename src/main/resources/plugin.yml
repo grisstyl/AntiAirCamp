@@ -1,0 +1,7 @@
+name: "AntiAirCamp"
+version: "1.0.0"
+main: "me.tylergrissom.antiaircamp.AntiAirCampPlugin"
+
+description: "Prevents players from camping in the air."
+authors: ["Tyler Grissom"]
+website: "https://tyler-g.net"
