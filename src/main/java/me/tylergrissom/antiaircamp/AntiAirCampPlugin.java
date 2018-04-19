@@ -3,6 +3,7 @@ package me.tylergrissom.antiaircamp;
 import lombok.Getter;
 import me.tylergrissom.antiaircamp.configuration.ConfigurationOptions;
 import me.tylergrissom.antiaircamp.listener.JoinListener;
+import me.tylergrissom.antiaircamp.listener.MoveListener;
 import me.tylergrissom.antiaircamp.listener.QuitListener;
 import me.tylergrissom.antiaircamp.task.CampingTask;
 import org.bukkit.Bukkit;
@@ -33,6 +34,7 @@ public class AntiAirCampPlugin extends JavaPlugin {
 
         Bukkit.getPluginManager().registerEvents(new JoinListener(this), this);
         Bukkit.getPluginManager().registerEvents(new QuitListener(this), this);
+        Bukkit.getPluginManager().registerEvents(new MoveListener(this), this);
 
         Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new CampingTask(this), 0, 20);
     }

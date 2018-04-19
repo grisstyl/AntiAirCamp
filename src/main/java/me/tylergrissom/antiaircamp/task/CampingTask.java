@@ -40,13 +40,18 @@ public class CampingTask extends BukkitRunnable {
         inactiveTime.put(p.getUniqueId(), current + 1);
     }
 
+    public static void reset(Player p) {
+        getInactiveTime().remove(p.getUniqueId());
+        getInactiveTime().put(p.getUniqueId(), 0);
+    }
+
     @Override
     public void run() {
         Bukkit.getOnlinePlayers().forEach(this::increment);
 
         Bukkit.getOnlinePlayers()
                 .stream()
-                .filter(player -> inactiveTime.get(player.getUniqueId()) > getPlugin().getOptions().getCampTimer())
+                .filter(player -> inactiveTime.get(player.getUniqueId()) > getPlugin().getOptions().getCampTimer() && !player.isOnGround())
                 .forEach(player -> player.damage(1));
     }
 }
